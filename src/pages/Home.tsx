@@ -1,7 +1,17 @@
+import React from 'react';
 import CategoryCard from '../components/CategoryCard';
 
+// Define the proper structure of a Category
+interface Category {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
+
 export default function Home() {
-  const categories: Array<{ id: number; [key: string]: any }> = JSON.parse(localStorage.getItem('categories') || '[]');
+  // Use the correct Category type for categories
+  const categories: Category[] = JSON.parse(localStorage.getItem('categories') || '[]');
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -24,7 +34,7 @@ export default function Home() {
       <div className="container mx-auto px-6 py-12">
         <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category: { id: number; [key: string]: any }) => (
+          {categories.map((category) => (
             <CategoryCard key={category.id} category={category} />
           ))}
         </div>
@@ -32,3 +42,4 @@ export default function Home() {
     </div>
   );
 }
+
