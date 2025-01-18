@@ -1,16 +1,15 @@
-import React from 'react';
+// Remove React import if not required in your version
 import CategoryCard from '../components/CategoryCard';
 
 // Define the proper structure of a Category
 interface Category {
-  id: number;
+  id: string;  // id should be string
   name: string;
   image: string;
   description: string;
 }
 
 export default function Home() {
-  // Use the correct Category type for categories
   const categories: Category[] = JSON.parse(localStorage.getItem('categories') || '[]');
 
   return (
@@ -42,4 +41,5 @@ export default function Home() {
     </div>
   );
 }
+
 
